@@ -1,4 +1,10 @@
+html {
+  height: 100vh;
+}
+
 body {
+  padding: 0;
+  height: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +16,52 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.item-left {
+  grid-area: left;
+  justify-self: end;
+  background-color: red;
+}
+
+.item-right {
+  grid-area: right;
+  justify-self: start;
+  background-color: red;
+}
+
+.item-center {
+  grid-area: center;
+  justify-self: center;
+  background-color: red;
+}
+
+.item-about {
+  grid-area: about_me;
+  justify-self: center;
+  background-color: red;
+}
+
+.item-title {
+  grid-area: title;
+  justify-self: start;
+  background-color: red;
+}
+
+.container {
+  display: grid;
+  height: 100%;
+  grid: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  align-content: center;
+  grid-template-areas: 
+    "title title title title title"
+    ". . about_me . ."
+    ". left center right ."
+    ". . . . ."
+    ". . . . .";
+}
+
+#root {
+  height: 100%;
 }
