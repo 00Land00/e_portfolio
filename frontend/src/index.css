@@ -13,6 +13,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  height: 100%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -21,31 +25,74 @@ code {
 .item-left {
   grid-area: left;
   justify-self: end;
-  background-color: red;
+  align-self: start;
+}
+h2.item-about-left {
+  margin: 0;
+  cursor: pointer;
+  text-align: end;
+}
+.left-option {
+  align-self: start;
+  text-align: end;
+  word-break: keep-all;
+  padding: 5px;
 }
 
 .item-right {
   grid-area: right;
   justify-self: start;
-  background-color: red;
+  align-self: start;
+}
+h2.item-about-right {
+  margin: 0;
+  cursor: pointer;
+  text-align: start;
+}
+.right-option {
+  align-self: start;
+  text-align: start;
+  word-break: keep-all;
+  padding: 5px;
 }
 
 .item-center {
   grid-area: center;
   justify-self: center;
-  background-color: red;
+  align-self: start;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+h2.item-about-center {
+  margin: 0;
+  cursor: pointer;
+  text-align: center;
+}
+.center-option {
+  align-self: start;
+  text-align: center;
+  word-break: keep-all;
+  padding: 5px;
 }
 
 .item-about {
+  padding: 10px;
   grid-area: about_me;
   justify-self: center;
-  background-color: red;
+  align-self: end;
+}
+h2.item-about-text {
+  margin: 0;
 }
 
 .item-title {
   grid-area: title;
   justify-self: start;
-  background-color: red;
+  align-self: start;
+}
+h1.item-title-text {
+  padding: 10px;
+  margin: 0;
 }
 
 .container {
@@ -57,11 +104,14 @@ code {
   grid-template-areas: 
     "title title title title title"
     ". . about_me . ."
-    ". left center right ."
-    ". . . . ."
+    "left left center right right"
+    "left left center right right"
     ". . . . .";
 }
 
-#root {
-  height: 100%;
+ul.option {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
+
