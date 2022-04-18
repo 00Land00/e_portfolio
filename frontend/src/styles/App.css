@@ -1,0 +1,122 @@
+.item-left {
+  grid-area: left;
+  justify-self: end;
+  align-self: start;
+}
+h2.item-about-left {
+  margin: 0;
+  cursor: pointer;
+  text-align: end;
+}
+h2.item-about-left:hover {
+  text-decoration: underline;
+}
+.left-option {
+  align-self: start;
+  text-align: end;
+  word-break: keep-all;
+  padding: 5px;
+  cursor: pointer;
+}
+.left-option:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.item-right {
+  grid-area: right;
+  justify-self: start;
+  align-self: start;
+}
+h2.item-about-right {
+  margin: 0;
+  cursor: pointer;
+  text-align: start;
+}
+h2.item-about-right:hover {
+  text-decoration: underline;
+}
+.right-option {
+  align-self: start;
+  text-align: start;
+  word-break: keep-all;
+  padding: 5px;
+  cursor: pointer;
+}
+.right-option:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.item-center {
+  grid-area: center;
+  justify-self: center;
+  align-self: start;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+h2.item-about-center {
+  margin: 0;
+  cursor: pointer;
+  text-align: center;
+}
+h2.item-about-center:hover {
+  text-decoration: underline;
+}
+.center-option {
+  align-self: start;
+  text-align: center;
+  word-break: keep-all;
+  padding: 5px;
+  cursor: pointer;
+}
+.center-option:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
+.item-about {
+  padding: 10px;
+  grid-area: about_me;
+  justify-self: center;
+  align-self: end;
+}
+h2.item-about-text {
+  margin: 0;
+  cursor: pointer;
+}
+h2.item-about-text:hover {
+  text-decoration: underline;
+}
+
+.item-title {
+  grid-area: title;
+  justify-self: start;
+  align-self: start;
+}
+h1.item-title-text {
+  padding: 10px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.container {
+  display: grid;
+  height: 100%;
+  grid: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  align-content: center;
+  grid-template-areas: 
+    "title title title title title"
+    ". . about_me . ."
+    "left left center right right"
+    "left left center right right"
+    ". . . . .";
+}
+
+ul.option {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}

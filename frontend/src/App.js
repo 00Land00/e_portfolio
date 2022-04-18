@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+
+import './styles/App.css'
 
 const App = () => {
   const [toggleProjectDD, setProjectDD] = useState(false)
   const [toggleExperienceDD, setExperienceDD] = useState(false)
   const [toggleIntentionDD, setIntentionDD] = useState(false)
 
-  const toggleOptionHandler = (toggleDD, setToggleDD, name) => () => {
-    console.log(name)
+  const toggleOptionHandler = (toggleDD, setToggleDD) => () => {
     setExperienceDD(false)
     setProjectDD(false)
     setIntentionDD(false)
@@ -14,21 +16,21 @@ const App = () => {
   }
 
   return (
-    <div className='container'>
-      <div className='item-title'>
-        <h1 className='item-title-text'>Lander Joshua Vitug</h1>
-      </div>
+    <>
+      <AboutMe />
 
-      <div className='item-about'>
-        <h2 className='item-about-text'>about me</h2>
-      </div>
-
-      <Experiences toggleOption={toggleExperienceDD} toggleOptionHandler={toggleOptionHandler(toggleExperienceDD, setExperienceDD, '2')} />
-      <Projects toggleOption={toggleProjectDD} toggleOptionHandler={toggleOptionHandler(toggleProjectDD, setProjectDD, '1')} />
-      
-      <Intentions toggleOption={toggleIntentionDD} toggleOptionHandler={toggleOptionHandler(toggleIntentionDD, setIntentionDD, '3')} />
-    </div>
+      <Experiences toggleOption={toggleExperienceDD} toggleOptionHandler={toggleOptionHandler(toggleExperienceDD, setExperienceDD)} />
+      <Projects toggleOption={toggleProjectDD} toggleOptionHandler={toggleOptionHandler(toggleProjectDD, setProjectDD)} />
+      <Intentions toggleOption={toggleIntentionDD} toggleOptionHandler={toggleOptionHandler(toggleIntentionDD, setIntentionDD)} />
+    </>
   )
+}
+
+const NavigateTo = (urlName) => {
+  const navigate = useNavigate()
+  return () => {
+    navigate("/" + urlName)
+  }
 }
 
 const DisplayOptions = ({options, styleName}) => {
@@ -36,7 +38,7 @@ const DisplayOptions = ({options, styleName}) => {
     <ul className='option'>
       {
         options.map(option => (
-          <li className={styleName} key={option.id}>{option.val}</li>
+          <li className={styleName} key={option.id} onClick={NavigateTo(option.val)}>{option.title}</li>
         ))
       }
     </ul>
@@ -53,29 +55,15 @@ const DisplayDD = ({styleSuffix, ddTitle, options, toggleOption, toggleOptionHan
 const Projects = ({toggleOption, toggleOptionHandler}) => {
   const options = [
     {
-      val: 'Test1 wow well im gonna go and boat',
+      title: 'proj-train',
+      val: 'proj-train',
       id: 0
     },
     {
-      val: 'Test2',
+      title: 'proj-monke',
+      val: 'proj-monke',
       id: 1
-    },
-    {
-      val: 'Test3',
-      id: 2
-    },
-    {
-      val: 'Test4',
-      id: 3
-    },
-    {
-      val: 'Test4',
-      id: 4
-    },
-    {
-      val: 'Test4',
-      id: 5
-    },
+    }
   ]
 
   return (
@@ -86,29 +74,20 @@ const Projects = ({toggleOption, toggleOptionHandler}) => {
 const Intentions = ({toggleOption, toggleOptionHandler}) => {
   const options = [
     {
-      val: 'Test1 wow well im gonna go and boat',
+      title: 'currently working on ...',
+      val: 'currently',
       id: 0
     },
     {
-      val: 'Test2',
+      title: 'game development inspirations',
+      val: 'game-dev',
       id: 1
     },
     {
-      val: 'Test3',
+      title: 'web development mindset',
+      val: 'web-dev',
       id: 2
-    },
-    {
-      val: 'Test4',
-      id: 3
-    },
-    {
-      val: 'Test4',
-      id: 4
-    },
-    {
-      val: 'Test4',
-      id: 5
-    },
+    }
   ]
 
   return (
@@ -119,33 +98,27 @@ const Intentions = ({toggleOption, toggleOptionHandler}) => {
 const Experiences = ({toggleOption, toggleOptionHandler}) => {
   const options = [
     {
-      val: 'Test1 wow well im gonna go and boat more more more! we need to test it for more!',
+      title: 'Taq Automotive Intelligence',
+      val: 'taq',
       id: 0
     },
     {
-      val: 'Test2',
+      title: 'Bit Space Development Ltd.',
+      val: 'bit-space',
       id: 1
-    },
-    {
-      val: 'Test3',
-      id: 2
-    },
-    {
-      val: 'Test4',
-      id: 3
-    },
-    {
-      val: 'Test4',
-      id: 4
-    },
-    {
-      val: 'Test4',
-      id: 5
-    },
+    }
   ]
 
   return (
     <DisplayDD styleSuffix='center' ddTitle='experiences' options={options} toggleOption={toggleOption} toggleOptionHandler={toggleOptionHandler} />
+  )
+}
+
+const AboutMe = () => {
+  return (
+    <div className='item-about'>
+      <h2 className='item-about-text' onClick={NavigateTo('about-me')}>about me</h2>
+    </div>
   )
 }
 
